@@ -1,3 +1,62 @@
-img{
+/* ==========================================================
+   Paleta BiblioWeb (tonos tierra)
+   Tema claro en :root, tema oscuro "Café y roble" abajo.
+   ========================================================== */
+:root {
+    --bw-fondo: #EDE0D4;       /* Almond Cream */
+    --bw-superficie: #E6CCB2;  /* Pale Oak */
+    --bw-borde: #DDB892;       /* Tan */
+    --bw-texto: #382417;       /* Deep Espresso */
+    --bw-texto-2: #7F5539;     /* Coffee Bean (texto secundario) */
+    --bw-primario: #7F5539;    /* Coffee Bean: navbar, footer */
+    --bw-accion: #9C6644;      /* Toffee Brown: botones */
+    --bw-acento: #DDB892;      /* Tan: badges, enlace activo */
+    --bw-decorativo: #B08968;  /* Faded Copper: solo hover/detalles */
+    --bw-peligro: #7A2E3A;     /* Burdeos */
+    --bw-isla: rgba(237, 224, 212, 0.65); /* Almond Cream semitransparente */
+}
+
+[data-bs-theme="dark"] {
+    --bw-fondo: #1E1510;
+    --bw-superficie: #2B1E16;
+    --bw-borde: #7F5539;
+    --bw-texto: #EDE0D4;
+    --bw-texto-2: #E6CCB2;
+    --bw-primario: #2B1E16;
+    --bw-accion: #9C6644;
+    --bw-acento: #DDB892;
+    --bw-peligro: #A8454F;
+    --bw-isla: rgba(43, 30, 22, 0.65);
+}
+
+body {
+    background-color: var(--bw-fondo);
+    color: var(--bw-texto);
+}
+
+img {
     height: auto;
+}
+
+.navbar-bw {
+    background-color: var(--bw-primario);
+}
+
+.navbar-bw .nav-link,
+.navbar-bw .navbar-brand {
+    color: #FFFFFF;
+}
+
+.navbar-bw .nav-link.active {
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-decoration-color: var(--bw-acento);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+.busqueda-panel {
+    background-color: var(--bw-isla);
+    border: 1px solid var(--bw-borde);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }

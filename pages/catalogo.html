@@ -1,138 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
+    <title>Catálogo | BiblioWeb</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/componentes.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg sticky-top py-2">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-bw sticky-top py-2">
             <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-4" href="../index.html">
-                <img src="../img/logo-biblioweb.svg" alt="" class= object-fit-contain">    
-            </a>
-            <button aria-controls="navMenu" aria-expanded="false" aria-label="Navegación" class="navbar-toggler" data-bs-target="#navMenu" data-bs-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+                <a class="navbar-brand fw-bold fs-4" href="../index.html">BiblioWeb</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                        Inicio
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../index.html#servicios">Servicios</a></li>
-                        <li><hr class="dropdown-divider"></hr></li>
-                        <li><a class="dropdown-item" href="../index.html/#horarios">Horarios</a></li>
-                    </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="catalogo.html" aria-current="page" >
-                            Catálogo de Libros
-                        </a>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inicio
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../index.html">Página de inicio</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="../index.html#servicios">Servicios</a></li>
+                                
+                                <li><a class="dropdown-item" href="../index.html#horarios">Horarios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="catalogo.html" aria-current="page">Catálogo</a>
+                        </li>
+                    </ul>>
                 </div>
             </div>
         </nav>
     </header>
     <main class="main-catalogo ">
 <!---Presentacion catalogo-->
-        <section class="container">
-            <article>
-                <h1>Catalogo en linea</h1>
-                <p>Explora todos nuestros libros disponibles</p>
-            </article>
+        <section class="container pt-5 text-center">
+            <h1>Catálogo en línea</h1>
+            <p>Explora todos nuestros libros disponibles</p>
         </section>
 <!---Barra de busqueda-->
-        <section class="container my-5">
-            <article>
-                <label for="search-bar" class="form-label"></label>
-                <input name="search-bar" id="search-bar" class="form-control" placeholder="Busca tu libro...">
-                <button class="btn btn-primary active btnFiltro" data-categoria="Todos">Todos</button>
-                <button class="btn btn-primary btnFiltro" data-categoria="Historia">Historia</button>
-                <button class="btn btn-primary btnFiltro" data-categoria="Drama">Drama</button>
-                <button class="btn btn-primary btnFiltro" data-categoria="Romance">Romance</button>
-                <button class="btn btn-primary btnFiltro" data-categoria="Fantasia">Fantasia</button>
-            </article>
+        <section class="container my-4">
+            <div class="busqueda-panel mx-auto p-3 rounded-4 shadow">
+                <label for="search-bar" class="visually-hidden">Buscar libro por título o autor</label>
+                <input type="search" name="search-bar" id="search-bar" class="form-control rounded-pill mb-3" placeholder="Busca tu libro...">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <button class="btn btn-primary btn-sm active btnFiltro" data-categoria="Todos">Todos</button>
+                    <button class="btn btn-primary btn-sm btnFiltro" data-categoria="Historia">Historia</button>
+                    <button class="btn btn-primary btn-sm btnFiltro" data-categoria="Drama">Drama</button>
+                    <button class="btn btn-primary btn-sm btnFiltro" data-categoria="Romance">Romance</button>
+                    <button class="btn btn-primary btn-sm btnFiltro" data-categoria="Fantasia">Fantasia</button>
+                </div>
+            </div>
         </section>
 <!---Grilla de libros-->
-        <section class="d-flex container mb-5 ">
-            <article class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gap-1 ">
-                <div class="col card tarjeta-libro" data-categoria="Drama">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-warning position-absolute">Drama</span>
-                            <img src="../img/libros/libro1.jpeg" alt="" class="card-img-top">
+        <section class="container mb-5">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 justify-content-center">
+                <div class="col tarjeta-libro" data-categoria="drama">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-warning position-absolute top-0 start-0 m-2 z-1">Drama</span>
+                        <div class="ratio ratio-4x3">
+                            <img src="../img/libros/libro1.jpeg" alt="Portada de Cien años de soledad" class="card-img-top object-fit-contain">
                         </div>
-                        <h2 class="card-title">100 a de soledad</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning btn-sm">Reservar</button>
-                    </div>
-                </div>
-                <div class="col card tarjeta-libro" data-categoria="Drama">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-warning position-absolute">Drama</span>
-                            <img src="../img/libros/libro2.jpeg" alt="" class="card-img-top">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">Cien años de soledad</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
                         </div>
-                        <h2 class="card-title">La metamorfosis</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning btn-sm">Reservar</button>
-                    </div>
+                    </article>
                 </div>
-                <div class="col card tarjeta-libro" data-categoria="Romance">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-danger position-absolute">Romance</span>
-                            <img src="../img/libros/libro3.jpeg" alt="Portada libro gabriel garcia marquez" class="card-img-top">
+                <div class="col tarjeta-libro" data-categoria="Drama">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-warning position-absolute top-0 start-0 m-2 z-1">Drama</span>
+                        <div class="ratio ratio-4x3">
+                            <img src="../img/libros/libro2.jpeg" alt="Portada de La metamorfosis" class="card-img-top object-fit-contain">
                         </div>
-                        <h2 class="card-title">Don Quijote de la mancha</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning btn-sm">Reservar</button>
-                    </div>
-                </div>
-                <div class="col card tarjeta-libro" data-categoria="Drama">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-warning position-absolute">Drama</span>
-                            <img src="../img/libros/libro4.jpeg" alt="Portada libro gabriel garcia marquez" class="card-img-top">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">La metamorfosis</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
                         </div>
-                        <h2 class="card-title">1984</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning btn-sm" ><a href="../index.html">Reservar</a></button>
-                    </div>
+                    </article>
                 </div>
-                <div class="col card tarjeta-libro" data-categoria="Fantasia">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-primary position-absolute">Fantasia</span>
-                            <img src="../img/libros/libro5.jpeg" alt="Portada libro gabriel garcia marquez" class="card-img-top">
+                <div class="col tarjeta-libro" data-categoria="Romance">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-danger position-absolute top-0 start-0 m-2 z-1">Romance</span>
+                        <div class="ratio ratio-4x3">
+                            <img src="../img/libros/libro3.jpeg" alt="Portada de Don Quijote de la Mancha" class="card-img-top object-fit-contain">
                         </div>
-                        <h2 class="card-title">Alicia en el pais de las maravillas</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning btn-sm">Reservar</button>
-                    </div>
-                </div>
-                <div class="col card tarjeta-libro" data-categoria="Drama">
-                    <div class="card-body d-grid">
-                        <div class="d-flex">
-                            <span class="badge rounded-pill text-bg-warning position-absolute">Drama</span>
-                            <img src="../img/libros/libro6.jpeg" alt="Portada libro gabriel garcia marquez" class="card-img-top">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">Don Quijote de la Mancha</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
                         </div>
-                        <h2 class="card-title">El principito</h2>
-                        <p class="card-text">ejemplo de texto</p>
-                        <button type="button" class="btn btn-warning">Reservar</button>
-                    </div>
+                    </article>
                 </div>
-
-            </article>
-
-        </section>    
+                <div class="col tarjeta-libro" data-categoria="Drama">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-warning position-absolute top-0 start-0 m-2 z-1">Drama</span>
+                        <div class="ratio ratio-4x3">
+                            <img src="../img/libros/libro4.jpeg" alt="Portada de 1984" class="card-img-top object-fit-contain">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">1984</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col tarjeta-libro" data-categoria="Fantasia">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-primary position-absolute top-0 start-0 m-2 z-1">Fantasia</span>
+                        <div class="ratio ratio-4x3">
+                        <img src="../img/libros/libro5.jpeg" alt="Portada de Alicia en el país de las maravillas" class="card-img-top object-fit-contain">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">Alicia en el país de las maravillas</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col tarjeta-libro" data-categoria="Drama">
+                    <article class="card h-100">
+                        <span class="badge rounded-pill text-bg-warning position-absolute top-0 start-0 m-2 z-1">Drama</span>
+                        <div class="ratio ratio-4x3">
+                            <img src="../img/libros/libro6.jpeg" alt="Portada de El principito" class="card-img-top object-fit-contain">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title h5">El principito</h2>
+                            <p class="card-text">ejemplo de texto</p>
+                            <button type="button" class="btn btn-warning btn-sm mt-auto">Solicitar prestamo</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
 

@@ -1,0 +1,12 @@
+/* ==========================================================================
+   BiblioWeb - css/estilos.css
+   Ajustes visuales propios del proyecto (portadas, carrusel, tablas del
+   panel). Aquí va lo que no es un componente reutilizable.
+   ========================================================================== */
+
+/* Botón del selector de tema (sol / luna) */
+#theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

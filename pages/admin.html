@@ -51,6 +51,49 @@
                 ● Sesión Activa: admin@biblioweb.test
             </div>
         </div>
+
+        <!-- ==================== FORMULARIO DE GESTIÓN DE LIBROS ==================== -->
+        <section class="card card-biblioweb p-4 mb-5">
+            <h4 class="font-serif fw-bold text-primary mb-3">Registrar o Editar Libro</h4>
+            <p class="text-secondary small mb-4">Ingresa los datos del volumen para la catalogación oficial.</p>
+            <form id="form-libro"
+                onsubmit="event.preventDefault(); alert('Acción estática: Formulario completado correctamente.');">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold" for="titulo">Título de la Obra *</label>
+                        <input class="form-control" id="titulo" placeholder="Ej. Ficciones" required="" type="text" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold" for="autor">Autor / Creador *</label>
+                        <input class="form-control" id="autor" placeholder="Ej. Jorge Luis Borges" required=""
+                            type="text" />
+                    </div>
+                    <div class="col-md-8">
+                        <label class="form-label small fw-bold" for="portada">URL de Portada Digital</label>
+                        <input class="form-control" id="portada" placeholder="https://images.unsplash.com/..."
+                            type="url" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold" for="categoria">Categoría Temática *</label>
+                        <select class="form-select" id="categoria" required="">
+                            <option disabled="" selected="" value="">Seleccionar...</option>
+                            <option value="Narrativa">Narrativa</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Ciencia">Ciencia</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold" for="descripcion">Descripción / Sinopsis</label>
+                        <textarea class="form-control" id="descripcion"
+                            placeholder="Resumen descriptivo del ejemplar..." rows="3"></textarea>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end gap-2 mt-4">
+                        <button class="btn btn-outline-secondary" type="reset">Cancelar</button>
+                        <button class="btn btn-verde px-4" type="submit">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
     </main>
 </body>
 

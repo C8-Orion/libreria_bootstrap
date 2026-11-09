@@ -34,9 +34,7 @@ body {
     color: var(--bw-texto);
 }
 
-img {
-    height: auto;
-}
+
 
 .navbar-bw {
     background-color: var(--bw-primario);
@@ -60,3 +58,179 @@ img {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
+/* ==========================================================
+   MODO CLARO (activo)
+   Mismo efecto del diseño oscuro (resplandores ambientales,
+   tarjetas y panel en armonía) pero con la paleta clara.
+   ========================================================== */
+
+/* 1. Fondo general de la página en tono claro y posición relativa para los resplandores */
+body {
+  background-color: var(--bw-fondo);
+  color: var(--bw-texto);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. Resplandores ambientales (Ambient Glow) usando pseudoelementos */
+body::before {
+  content: '';
+  position: absolute;
+  top: -8rem;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  background-color: rgba(221, 184, 146, 0.55); /* Resplandor Tan cálido */
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 15rem;
+  left: -5rem;
+  width: 20rem;
+  height: 20rem;
+  background-color: rgba(176, 137, 104, 0.3); /* Resplandor Faded Copper secundario */
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Asegurar que el contenido principal y el footer queden por encima de los resplandores */
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* 4. Tarjetas de Bootstrap en tono claro para mantener la armonía */
+.card {
+  background-color: #F5ECE3;
+  border-color: var(--bw-borde);
+  color: var(--bw-texto);
+}
+
+.card-text {
+  color: var(--bw-texto-2);
+}
+
+/* 5. Panel de búsqueda adaptado */
+.busqueda-panel {
+  background-color: var(--bw-isla);
+  border: 1px solid var(--bw-borde);
+}
+
+#search-bar {
+  background-color: #FFFAF5;
+  color: var(--bw-texto);
+  border-color: var(--bw-borde);
+}
+
+#search-bar::placeholder {
+  color: rgba(127, 85, 57, 0.6);
+}
+
+/* 6. Footer en Coffee Bean, igual que la navbar */
+.footer-bw {
+  background-color: var(--bw-primario);
+  color: var(--bw-fondo);
+  border-top: 3px solid var(--bw-acento);
+}
+
+/* ==========================================================
+   MODO OSCURO (pendiente de implementar)
+   Diseño oscuro original, guardado como comentario.
+   Sugerencia: al activarlo, anteponer [data-bs-theme="dark"]
+   a cada selector (ej. [data-bs-theme="dark"] .card) y quitar
+   los !important, para que solo aplique cuando el <html>
+   tenga data-bs-theme="dark".
+   ==========================================================
+
+-- 1. Fondo general de la página en tono oscuro y posición relativa para los resplandores --
+body {
+  background-color: #1a110d !important;
+  color: #f1dfd6 !important;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+-- 2. Creadores de los resplandores ambientales (Ambient Glow) usando pseudoelementos --
+body::before {
+  content: '';
+  position: absolute;
+  top: -8rem;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  background-color: rgba(250, 184, 144, 0.1);   -- Resplandor cálido claro --
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 15rem;
+  left: -5rem;
+  width: 20rem;
+  height: 20rem;
+  background-color: rgba(92, 66, 36, 0.25);   -- Resplandor marrón secundario --
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+-- 3. Asegurar que el contenido principal y el footer queden por encima de los resplandores --
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+-- 4. Adaptar tus tarjetas de Bootstrap al estilo oscuro para que mantengan la armonía --
+.card {
+  background-color: #271e18 !important;
+  border-color: #3e322d !important;
+  color: #f1dfd6 !important;
+}
+
+.card-text {
+  color: #d6c3b9 !important;
+}
+
+-- 5. Panel de búsqueda adaptado --
+.busqueda-panel {
+  background-color: #231a14 !important;
+  border: 1px solid #3e322d;
+}
+
+#search-bar {
+  background-color: #150c08 !important;
+  color: #f1dfd6 !important;
+  border-color: #52443c !important;
+}
+
+#search-bar::placeholder {
+  color: rgba(214, 195, 185, 0.5);
+}
+
+-- 6. Footer negro con texto claro (equivale a las clases bg-black text-light de Bootstrap) --
+.footer-bw {
+  background-color: #000000 !important;
+  color: #f8f9fa !important;
+  border-top: none;
+}
+
+   ========== FIN MODO OSCURO ========== */

@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/tema.js"></script>
 </head>
-<body>
-<<<<<<< HEAD
-    
-=======
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-biblioweb sticky-top py-2" aria-label="Principal">
-      <div class="container-fluid">
+<body class="pagina-libreria">
+  <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-bw py-2">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-4" href="index.html">
+                    <img src="img/logo-libro.svg" alt="" width="28" height="28">
+                    BiblioWeb
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inicio
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.html" aria-current="page">Página de inicio</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.html#servicios">Servicios</a></li>
+                                <li><a class="dropdown-item" href="index.html#horarios">Horarios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="pages/catalogo.html">Catálogo</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-light rounded-circle p-2 lh-1" id="theme-toggle" title="Alternar tema" aria-label="Alternar modo claro">
+                            
+                        </button>
+                        <a class="btn btn-terracota px-3 py-1" href="pages/login.html">Acceso Admin</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-        <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          </svg>
-          <span class="d-flex flex-column lh-1">
-            <span class="fw-bold">BiblioWeb</span>
-            <small class="text-uppercase">Biblioteca cívica & archivo</small>
-          </span>
-        </a>
-
-        <!-- Botón hamburguesa (móvil) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
-          aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Enlaces + acciones -->
-        <div class="collapse navbar-collapse" id="menuPrincipal">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Catálogo de libros</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Horarios & contacto</a></li>
-          </ul>
-
-          <div class="d-flex align-items-center gap-2">
-            <button type="button" id="btnTema" class="btn btn-sm btn-outline-secondary" aria-label="Cambiar tema">
-              <i class="bi bi-sun"></i>
-            </button>
-            <a href="#" class="btn btn-sm btn-outline-secondary">
-              <i class="bi bi-shield-lock"></i> Acceso Admin
-            </a>
-            <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle" aria-label="Mi cuenta">
-              <i class="bi bi-person"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </nav>
-
-    <div class="franja_inferior py-1">
-      <div class="container d-flex justify-content-between align-items-center small">
+    <!-- Franja de aviso -->
+    <div class="franja-aviso py-1">
+      <div class="container d-md-flex justify-content-between align-items-center small">
 
         <div class="d-flex align-items-center gap-3">
-          <span class="badge text-uppercase">RED PUBLICA LIBRE</span>
-          <span>Abierto hoy: 8:30 - 20:30</span>
-          <span class="d-none d-md-flex">Claustro Central y Sala de investigadores en regimen libre de consulta</span>
+          <span class="badge badge-biblioweb text-uppercase">Red pública libre</span>
+          <span>Abierto hoy: 08:30 – 20:30 h</span>
+          <span class="d-none d-md-flex">Claustro Central y Sala de investigadores en régimen de libre consulta</span>
         </div>
 
         <div class="d-none d-md-flex gap-3">
-          <a href="#" class="text-decoration-none"> Catalogo OPAC en linea</a>
-          <a href="#" class="text-decoration-none">Como llegar</a>
+          <a href="#" class="text-decoration-none">Catálogo OPAC en línea</a>
+          <a href="#" class="text-decoration-none">Cómo llegar</a>
         </div>
 
       </div>
     </div>
+
   </header>
 
->>>>>>> b319d03 (feat: se agrega barra de navegacion a index)
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

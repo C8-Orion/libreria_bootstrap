@@ -10,3 +10,490 @@
     align-items: center;
     justify-content: center;
 }
+
+/* ==========================================================================
+   CATÁLOGO (pages/catalogo.html)
+   Todo este bloque está limitado a <body class="pagina-catalogo">, así que
+   no afecta a index, login ni admin. Usa la paleta del catálogo con las
+   mismas fuentes que importa base.css (Merriweather / Plus Jakarta Sans).
+
+   Índice:
+     1. Paleta y tema (claro / oscuro)
+     2. Estructura de página y resplandores
+     3. Navbar y menú desplegable
+     4. Encabezado y contador de libros
+     5. Panel de búsqueda y filtros
+     6. Tarjetas, portadas y badges
+     7. Botones
+     8. Formularios y modal
+     9. Pie de página
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Paleta y tema (tonos tierra)
+   -------------------------------------------------------------------------- */
+.pagina-catalogo {
+    --cat-font-serif: 'Merriweather', Georgia, serif;
+    --cat-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    --bw-fondo: #EDE0D4;       /* Almond Cream */
+    --bw-superficie: #E6CCB2;  /* Pale Oak */
+    --bw-borde: #DDB892;       /* Tan */
+    --bw-texto: #382417;       /* Deep Espresso */
+    --bw-texto-2: #7F5539;     /* Coffee Bean (texto secundario) */
+    --bw-primario: #7F5539;    /* Coffee Bean: navbar, footer */
+    --bw-accion: #9C6644;      /* Toffee Brown: botones */
+    --bw-acento: #DDB892;      /* Tan: badges, enlace activo */
+    --bw-decorativo: #B08968;  /* Faded Copper: solo hover/detalles */
+    --bw-peligro: #7A2E3A;     /* Burdeos */
+    --bw-isla: rgba(237, 224, 212, 0.65); /* Almond Cream semitransparente */
+
+    --bw-texto-accion: #FFFFFF;
+    --bw-input: #FFFAF5;
+    --bw-sombra: rgba(56, 36, 23, 0.10);
+    --bw-foco: rgba(127, 85, 57, 0.35);
+    --bw-brillo-1: rgba(221, 184, 146, 0.55);
+    --bw-brillo-2: rgba(176, 137, 104, 0.30);
+
+    /* Variables de Bootstrap 5.3 (solo dentro del catálogo) */
+    --bs-body-font-family: var(--cat-font-sans);
+    --bs-body-bg: var(--bw-fondo);
+    --bs-body-color: var(--bw-texto);
+    --bs-secondary-color: var(--bw-texto-2);
+    --bs-border-color: var(--bw-borde);
+    --bs-tertiary-bg: var(--bw-superficie);
+    --bs-link-color: var(--bw-primario);
+    --bs-link-hover-color: var(--bw-accion);
+}
+
+[data-bs-theme="dark"] .pagina-catalogo {
+    --bw-fondo: #1E1510;
+    --bw-superficie: #2B1E16;
+    --bw-borde: #7F5539;
+    --bw-texto: #EDE0D4;
+    --bw-texto-2: #E6CCB2;
+    --bw-primario: #2B1E16;
+    --bw-accion: #9C6644;
+    --bw-acento: #DDB892;
+    --bw-decorativo: #B08968;
+    --bw-peligro: #A8454F;
+    --bw-isla: rgba(43, 30, 22, 0.65);
+
+    --bw-texto-accion: #EDE0D4;
+    --bw-input: #1E1510;
+    --bw-sombra: rgba(0, 0, 0, 0.35);
+    --bw-foco: rgba(221, 184, 146, 0.55);
+    --bw-brillo-1: rgba(221, 184, 146, 0.10);
+    --bw-brillo-2: rgba(127, 85, 57, 0.25);
+
+    --bs-link-color: var(--bw-acento);
+    --bs-link-hover-color: #FFFFFF;
+}
+.pagina-catalogo {
+    font-family: var(--cat-font-sans);
+    background-color: var(--bw-fondo);
+    color: var(--bw-texto);
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagina-catalogo h1, .pagina-catalogo h2, .pagina-catalogo h3, .pagina-catalogo h4, .pagina-catalogo h5, .pagina-catalogo .font-serif {
+    font-family: var(--cat-font-serif);
+}
+
+.pagina-catalogo a {
+    color: var(--bs-link-color);
+}
+
+.pagina-catalogo .text-secondary {
+    color: var(--bw-texto-2) !important;
+}
+
+.pagina-catalogo :focus-visible {
+    outline: 2px solid var(--bw-acento);
+    outline-offset: 2px;
+}
+
+.pagina-catalogo::before, .pagina-catalogo::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pagina-catalogo::before {
+    top: -8rem;
+    right: 25%;
+    width: 24rem;
+    height: 24rem;
+    background-color: var(--bw-brillo-1);
+}
+
+.pagina-catalogo::after {
+    top: 15rem;
+    left: -5rem;
+    width: 20rem;
+    height: 20rem;
+    background-color: var(--bw-brillo-2);
+}
+
+/* El contenido queda por encima de los resplandores*/
+.pagina-catalogo > main,
+.pagina-catalogo > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   3. Navbar y menú desplegable
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .navbar-bw {
+    background-color: var(--bw-primario);
+    border-bottom: 3px solid var(--bw-acento);
+    box-shadow: 0 4px 16px var(--bw-sombra);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pagina-catalogo .navbar-bw .nav-link,
+.pagina-catalogo .navbar-bw .navbar-brand {
+    color: var(--bw-fondo);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.pagina-catalogo .navbar-bw .navbar-brand {
+    font-family: var(--cat-font-serif);
+}
+
+[data-bs-theme="dark"] .pagina-catalogo .navbar-bw .nav-link {
+    color: var(--bw-texto-2);
+}
+
+.pagina-catalogo .navbar-bw .nav-link:hover,
+.pagina-catalogo .navbar-bw .nav-link:focus,
+.pagina-catalogo .navbar-bw .nav-link.show {
+    color: #FFFFFF;
+}
+
+.pagina-catalogo .navbar-bw .nav-link.active {
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-decoration-color: var(--bw-acento);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+
+.pagina-catalogo .navbar-bw .dropdown-menu {
+    --bs-dropdown-bg: var(--bw-fondo);
+    --bs-dropdown-color: var(--bw-texto);
+    --bs-dropdown-border-color: var(--bw-borde);
+    --bs-dropdown-link-color: var(--bw-texto);
+    --bs-dropdown-link-hover-color: var(--bw-texto);
+    --bs-dropdown-link-hover-bg: var(--bw-superficie);
+    --bs-dropdown-link-active-color: var(--bw-texto-accion);
+    --bs-dropdown-link-active-bg: var(--bw-accion);
+    --bs-dropdown-divider-bg: var(--bw-borde);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px var(--bw-sombra);
+}
+
+/* Botón del selector de tema (sol / luna) */
+.pagina-catalogo #theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. Encabezado y contador de libros
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .catalogo-titulo {
+    border-bottom: 1px solid var(--bw-borde);
+}
+
+.pagina-catalogo .catalogo-titulo p {
+    max-width: 40rem;
+}
+
+.pagina-catalogo .contador-libros {
+    display: inline-block;
+    background-color: var(--bw-superficie);
+    border: 1px solid var(--bw-borde);
+    border-radius: 8px;
+    box-shadow: 0 4px 14px var(--bw-sombra);
+    min-width: 9rem;
+}
+
+.pagina-catalogo #contador-libros {
+    color: var(--bw-accion);
+}
+
+[data-bs-theme="dark"] .pagina-catalogo #contador-libros {
+    color: var(--bw-acento);
+}
+
+/* --------------------------------------------------------------------------
+   5. Panel de búsqueda y filtros
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .busqueda-panel {
+    background-color: var(--bw-isla);
+    border: 1px solid var(--bw-borde);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 14px var(--bw-sombra) !important;
+    align-items: center;
+}
+
+.pagina-catalogo #search-bar {
+    background-color: var(--bw-input);
+    color: var(--bw-texto);
+    border-color: var(--bw-borde);
+}
+
+.pagina-catalogo #search-bar::placeholder {
+    color: var(--bw-texto-2);
+    opacity: 0.6;
+}
+
+.pagina-catalogo #search-bar:focus {
+    border-color: var(--bw-accion);
+    box-shadow: 0 0 0 0.25rem var(--bw-foco);
+}
+
+/* Botones de filtro: misma paleta para todos, el activo se rellena */
+.pagina-catalogo .busqueda-panel .btnFiltro {
+    --bs-btn-bg: transparent;
+    --bs-btn-color: var(--bw-texto-2);
+    --bs-btn-border-color: var(--bw-borde);
+    --bs-btn-hover-bg: var(--bw-superficie);
+    --bs-btn-hover-color: var(--bw-texto);
+    --bs-btn-hover-border-color: var(--bw-accion);
+    --bs-btn-active-bg: var(--bw-accion);
+    --bs-btn-active-color: var(--bw-texto-accion);
+    --bs-btn-active-border-color: var(--bw-accion);
+    border-radius: 50rem;
+    font-weight: 600;
+    padding-block: 0.45rem;
+    padding-inline: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Tarjetas, portadas y badges
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .card-bw {
+    --bs-card-bg: var(--bw-superficie);
+    --bs-card-border-color: var(--bw-borde);
+    --bs-card-color: var(--bw-texto);
+    --bs-card-title-color: var(--bw-texto);
+    --bs-card-subtitle-color: var(--bw-texto-2);
+    border-radius: 8px;
+    box-shadow: 0 4px 14px var(--bw-sombra);
+    transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pagina-catalogo .card-bw:hover {
+    border-color: var(--bw-accion);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px var(--bw-sombra);
+}
+
+.pagina-catalogo .card-bw .card-text {
+    color: var(--bw-texto-2);
+}
+
+.pagina-catalogo .book-cover-wrap {
+    height: 280px;
+    padding: 1rem;
+    background-color: var(--bw-fondo);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagina-catalogo .book-cover {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px var(--bw-sombra);
+}
+
+.pagina-catalogo .badge-narrativa {
+    background-color: var(--bw-acento);
+    color: #382417;
+    font-weight: 600;
+}
+
+.pagina-catalogo .badge-tecnologia {
+    background-color: var(--bw-decorativo);
+    color: #2B1E16;
+    font-weight: 600;
+}
+
+.pagina-catalogo .badge-ciencia {
+    background-color: #7F5539;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+[data-bs-theme="dark"] .pagina-catalogo .badge-ciencia {
+    background-color: var(--bw-accion);
+    color: var(--bw-texto);
+}
+
+/* --------------------------------------------------------------------------
+   7. Botones
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .btn-terracota {
+    --bs-btn-bg: var(--bw-accion);
+    --bs-btn-border-color: var(--bw-accion);
+    --bs-btn-color: var(--bw-texto-accion);
+    --bs-btn-hover-bg: var(--bw-primario);
+    --bs-btn-hover-border-color: var(--bw-primario);
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-active-bg: var(--bw-primario);
+    --bs-btn-active-border-color: var(--bw-primario);
+    --bs-btn-active-color: #FFFFFF;
+    font-weight: 600;
+}
+
+[data-bs-theme="dark"] .pagina-catalogo .btn-terracota {
+    --bs-btn-hover-bg: var(--bw-decorativo);
+    --bs-btn-hover-border-color: var(--bw-decorativo);
+    --bs-btn-hover-color: var(--bw-fondo);
+    --bs-btn-active-bg: var(--bw-decorativo);
+    --bs-btn-active-border-color: var(--bw-decorativo);
+    --bs-btn-active-color: var(--bw-fondo);
+}
+
+/* En la navbar el botón de Acceso Admin se aclara al pasar el cursor,
+   porque la navbar ya usa Coffee Bean de fondo */
+.pagina-catalogo .navbar-bw .btn-terracota {
+    --bs-btn-hover-bg: var(--bw-decorativo);
+    --bs-btn-hover-border-color: var(--bw-decorativo);
+}
+
+.pagina-catalogo .btn-outline-secondary {
+    --bs-btn-color: var(--bw-texto-2);
+    --bs-btn-border-color: var(--bw-borde);
+    --bs-btn-hover-bg: var(--bw-superficie);
+    --bs-btn-hover-border-color: var(--bw-accion);
+    --bs-btn-hover-color: var(--bw-texto);
+    --bs-btn-active-bg: var(--bw-superficie);
+    --bs-btn-active-border-color: var(--bw-accion);
+    --bs-btn-active-color: var(--bw-texto);
+}
+
+.pagina-catalogo .btn:focus-visible {
+    box-shadow: 0 0 0 0.25rem var(--bw-foco);
+}
+
+/* --------------------------------------------------------------------------
+   8. Formularios y modal
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .form-control,
+.pagina-catalogo .form-select {
+    background-color: var(--bw-input);
+    border: 1px solid var(--bw-borde);
+    color: var(--bw-texto);
+}
+
+.pagina-catalogo .form-control:focus,
+.pagina-catalogo .form-select:focus {
+    background-color: var(--bw-input);
+    color: var(--bw-texto);
+    border-color: var(--bw-accion);
+    box-shadow: 0 0 0 0.25rem var(--bw-foco);
+}
+
+.pagina-catalogo .form-control::placeholder {
+    color: var(--bw-texto-2);
+    opacity: 0.6;
+}
+
+.pagina-catalogo .form-check-input {
+    background-color: var(--bw-input);
+    border-color: var(--bw-borde);
+}
+
+.pagina-catalogo .form-check-input:checked {
+    background-color: var(--bw-accion);
+    border-color: var(--bw-accion);
+}
+
+.pagina-catalogo .form-check-input:focus {
+    border-color: var(--bw-accion);
+    box-shadow: 0 0 0 0.25rem var(--bw-foco);
+}
+
+.pagina-catalogo .modal-content {
+    background-color: var(--bw-fondo);
+    border: 1px solid var(--bw-borde);
+    border-radius: 12px;
+    color: var(--bw-texto);
+    box-shadow: 0 12px 36px var(--bw-sombra);
+}
+
+[data-bs-theme="dark"] .pagina-catalogo .modal-content {
+    background-color: var(--bw-superficie);
+}
+
+.pagina-catalogo .modal-header,
+.pagina-catalogo .modal-footer {
+    border-color: var(--bw-borde);
+}
+
+/* --------------------------------------------------------------------------
+   9. Pie de página
+   -------------------------------------------------------------------------- */
+.pagina-catalogo .footer-bw {
+    background-color: var(--bw-primario);
+    color: var(--bw-fondo);
+    border-top: 3px solid var(--bw-acento);
+}
+
+[data-bs-theme="dark"] .pagina-catalogo .footer-bw {
+    color: var(--bw-texto-2);
+}
+
+.pagina-catalogo .footer-bw h2 {
+    color: var(--bw-acento);
+}
+
+.pagina-catalogo .footer-bw ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.pagina-catalogo .footer-bw li + li {
+    margin-top: 0.35rem;
+}
+
+.pagina-catalogo .footer-bw a {
+    color: var(--bw-acento);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.pagina-catalogo .footer-bw a:hover,
+.pagina-catalogo .footer-bw a:focus {
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.pagina-catalogo .footer-bw-legal {
+    border-color: var(--bw-borde) !important;
+    opacity: 0.85;
+}

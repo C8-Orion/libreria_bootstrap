@@ -24,3 +24,23 @@
     max-width: 100% !important;
     box-sizing: border-box;
 }
+/* --------------------------------------------------------------------------
+   Navbar
+   -------------------------------------------------------------------------- */
+.navbar-biblioweb {
+    background-color: var(--bw-navbar-bg) !important;
+    border-bottom: 3px solid var(--bw-navbar-border);
+    box-shadow: 0 4px 16px var(--bw-shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-biblioweb .nav-link {
+    color: var(--bw-navbar-link) !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar-biblioweb .nav-link:hover,
+.navbar-biblioweb .nav-link.active {
+    color: var(--bw-navbar-link-hover) !important;
+}

@@ -7,17 +7,48 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/componentes.css">
     <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/tema.js"></script>
 </head>
 
-<body>
-
-    <header>
-        <nav>
-
+<body class="pagina-libreria">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-bw py-2">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-4" href="../index.html">
+                    <img src="../img/logo-libro.svg" alt="" width="28" height="28">
+                    BiblioWeb
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inicio
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../index.html">Página de inicio</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="../index.html#servicios">Servicios</a></li>
+                                <li><a class="dropdown-item" href="../index.html#horarios">Horarios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="catalogo.html" aria-current="page">Catálogo</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-light rounded-circle p-2 lh-1" id="theme-toggle" title="Alternar tema" aria-label="Alternar modo claro">
+                            ☀️
+                        </button>
+                        <a class="btn btn-terracota px-3 py-1" href="login.html">Acceso Admin</a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 

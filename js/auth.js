@@ -1,71 +1,153 @@
-const button = document.getElementById('btnSubmit')
+const button = document.getElementById('btnSubmit');
 const formulario = document.getElementById('login-form');
+const emailInput = document.getElementById('email');
+const errorMessage = document.getElementById('error-message');
+const errorMessageFull = document.getElementById('error-message-full');
+
 const currentWindow = window.location.pathname;
-const errorMessage = document.getElementById('error-message')
-const errorMessageFull = document.getElementById('error-message-full')
 
 if (!currentWindow.includes("login.html")) {
     sessionStorage.setItem('lastPage', window.location.href);
 }
-
-button.addEventListener('click', authentication)
-protectLogin()
+protectLogin();
 
 if (formulario) {
-    formulario.addEventListener('submit', authentication)
+    formulario.addEventListener('submit', authentication);
+} else if (button) {
+    button.addEventListener('click', authentication);
 }
 
-const emailInput = document.getElementById('email')
+if (emailInput) {
 
-emailInput.addEventListener('change', (e) => {
-    const email = emailInput.value
-    const regexGmail = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
-    if (!regexGmail.test(email)) {
-        emailInput.classList.add("is-invalid")
-        errorMessage.innerText = "Formato de correo inválido"
-        return
-    }
-    emailInput.classList.remove("is-invalid")
-    errorMessage.innerText = ""
+    emailInput.addEventListener('change', () => {
 
-})
+        const email = emailInput.value;
 
+        const regexGmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!regexGmail.test(email)) {
+
+            emailInput.classList.add("is-invalid");
+
+            if (errorMessage) {
+                errorMessage.innerText = "Formato de correo inválido";
+            }
+
+            return;
+        }
+
+        emailInput.classList.remove("is-invalid");
+
+        if (errorMessage) {
+            errorMessage.innerText = "";
+        }
+
+    });
+
+}
 
 function authentication(e) {
-    e.preventDefault()
-    const password = document.getElementById('password').value
-    const emailInput = document.getElementById('email')
-    const email = emailInput.value
-    const regexGmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z]/;
+
+    e.preventDefault();
+
+    const password = document.getElementById('password').value;
+    const email = emailInput.value;
+
+    const regexGmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Validar campos vacíos.
 
     if (email === "" || password === "") {
-        errorMessageFull.innerText = "Ingrese todos los campos"
-        return
-    }
-    if (!regexGmail.test(email)) {
-        emailInput.classList.add("is-invalid")
-        errorMessage.innerText = "Formato de correo inválido"
-        return
+
+        if (errorMessageFull) {
+            errorMessageFull.innerText = "Ingrese todos los campos";
+        }
+
+        return;
     }
 
-    if (email.toLowerCase() === "admin@biblioweb.test" && password === "Admin123") {
-        console.log("auth creado pasando a ADMIN")
-        sessionStorage.setItem('auth', 'true')
-        window.location = "./admin.html"
-    } else {
-        errorMessageFull.innerText = "Correo o contraseña inválidos"
+    if (!regexGmail.test(email)) {
+
+        emailInput.classList.add("is-invalid");
+
+        if (errorMessage) {
+            errorMessage.innerText = "Formato de correo inválido";
+        }
+
+        return;
     }
+
+    emailInput.classList.remove("is-invalid");
+
+    // Validar credenciales.
+
+    if (
+        email.toLowerCase() === "admin@biblioweb.test" &&
+        password === "Admin123"
+    ) {
+
+        console.log("Autenticación correcta. Pasando a ADMIN");
+
+        sessionStorage.setItem('auth', 'true');
+
+        window.location.href = "./admin.html";
+
+    } else {
+
+        if (errorMessageFull) {
+            errorMessageFull.innerText = "Correo o contraseña inválidos";
+        }
+
+    }
+
 }
 
 
 function protectLogin() {
+
     const auth = sessionStorage.getItem('auth');
+
     const currentWindow = window.location.pathname;
+
+    // Si ya inició sesión, evitar volver al login.
 
     if (auth === 'true' && currentWindow.includes("login.html")) {
 
         const previousPage = sessionStorage.getItem('lastPage');
 
         window.location.href = previousPage || "./admin.html";
+
     }
+
+    if (auth !== 'true' && currentWindow.includes("admin.html")) {
+
+        window.location.href = "./login.html";
+
+    }
+
+}
+
+
+function logout() {
+
+    sessionStorage.removeItem('auth');
+
+    sessionStorage.removeItem('lastPage');
+
+    window.location.href = '../index.html';
+
+}
+
+const logoutBtn = document.getElementById('btn-logout');
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener('click', (e) => {
+
+        e.preventDefault();
+
+        logout();
+
+    });
+
 }

@@ -90,10 +90,6 @@
     --bs-link-color: var(--bw-acento);
     --bs-link-hover-color: #FFFFFF;
 }
-
-/* --------------------------------------------------------------------------
-   2. Estructura de página y resplandores ambientales
-   -------------------------------------------------------------------------- */
 .pagina-catalogo {
     font-family: var(--cat-font-sans);
     background-color: var(--bw-fondo);
@@ -106,12 +102,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.pagina-catalogo h1,
-.pagina-catalogo h2,
-.pagina-catalogo h3,
-.pagina-catalogo h4,
-.pagina-catalogo h5,
-.pagina-catalogo .font-serif {
+.pagina-catalogo h1, .pagina-catalogo h2, .pagina-catalogo h3, .pagina-catalogo h4, .pagina-catalogo h5, .pagina-catalogo .font-serif {
     font-family: var(--cat-font-serif);
 }
 
@@ -128,8 +119,7 @@
     outline-offset: 2px;
 }
 
-.pagina-catalogo::before,
-.pagina-catalogo::after {
+.pagina-catalogo::before, .pagina-catalogo::after {
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -154,8 +144,7 @@
     background-color: var(--bw-brillo-2);
 }
 
-/* El contenido queda por encima de los resplandores
-   (el header ya es sticky-top con z-index propio de Bootstrap) */
+/* El contenido queda por encima de los resplandores*/
 .pagina-catalogo > main,
 .pagina-catalogo > footer {
     position: relative;

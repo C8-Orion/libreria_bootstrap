@@ -403,7 +403,7 @@ body > footer {
     color: var(--bw-texto-2);
 }
 
-.footer-bw h2 {
+.footer-bw h2, p {
     color: var(--bw-acento);
 }
 
@@ -415,6 +415,9 @@ body > footer {
 
 .footer-bw li + li {
     margin-top: 0.35rem;
+}
+.footer-bw ul{
+    color: var(--bw-acento);
 }
 
 .footer-bw a {
@@ -432,4 +435,5 @@ body > footer {
 .footer-bw-legal {
     border-color: var(--bw-borde) !important;
     opacity: 0.85;
+    color: var(--bw-acento);
 }

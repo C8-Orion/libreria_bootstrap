@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioWeb - Panel de Administración</title>
-    <!-- Bootstrap 5.3 CSS por CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Hoja de Estilos Institucional -->
-    <link href="../css/base.css" rel="stylesheet" />
-    <link href="../css/componentes.css" rel="stylesheet" />
-    <link href="../css/estilos.css" rel="stylesheet" />
-    <!-- Tema claro/oscuro (en el head para evitar parpadeo) -->
-    <script src="js/tema.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/componentes.css" rel="stylesheet">
+    <link href="../css/estilos.css" rel="stylesheet">
+
+    <script src="../js/tema.js"></script>
 </head>
 
 <body>
-    <header>
-        <!-- ==================== BARRA DE NAVEGACIÓN ==================== -->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-biblioweb sticky-top py-2">
+
+    <a class="visually-hidden-focusable" href="#contenido-principal">Saltar al contenido principal</a>
+
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-biblioweb py-2" aria-label="Navegación del panel">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-4" href="admin.html">
-                    <svg fill="none" height="28" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="28">
+                    <svg aria-hidden="true" fill="none" height="28" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" width="28">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                     </svg>
@@ -29,54 +32,54 @@
                 </a>
                 <div class="d-flex align-items-center gap-3 ms-auto">
                     <button class="btn btn-outline-light rounded-circle p-2 lh-1" id="theme-toggle"
-                        style="width: 38px; height: 38px;" title="Alternar tema">
+                        style="width: 38px; height: 38px;" title="Alternar tema" type="button">
                         ☀️
                     </button>
-                    <!-- Botón de Cerrar Sesión requerido -->
-                    <button class="btn btn-terracota btn-sm px-3" id="btn-logout">
+                    <button class="btn btn-terracota btn-sm px-3" id="btn-logout" type="button">
                         Cerrar sesión
                     </button>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="container my-5">
-        <!-- ==================== CABECERA DEL PANEL ==================== -->
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+
+    <main class="container my-5" id="contenido-principal">
+
+        <header class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <div>
                 <h1 class="font-serif fw-bold display-6 mb-1">Consola Central de Administración</h1>
                 <p class="text-secondary mb-0">Gestión de acervo bibliográfico, inventario y solicitudes ciudadanas.</p>
             </div>
-            <div class="badge bg-success-subtle text-success fs-6 px-3 py-2 border">
-                ● Sesión Activa: admin@biblioweb.test
-            </div>
-        </div>
+            <span class="badge bg-success-subtle text-success fs-6 px-3 py-2 border">
+                <span aria-hidden="true">●</span> Sesión Activa: admin@biblioweb.test
+            </span>
+        </header>
 
-        <!-- ==================== FORMULARIO DE GESTIÓN DE LIBROS ==================== -->
-        <section class="card card-biblioweb p-4 mb-5">
-            <h4 class="font-serif fw-bold text-primary mb-3">Registrar o Editar Libro</h4>
-            <p class="text-secondary small mb-4">Ingresa los datos del volumen para la catalogación oficial.</p>
-            <form id="form-libro"
+        <section class="card card-biblioweb p-4 mb-5" aria-labelledby="titulo-form-libro">
+            <header>
+                <h2 class="h4 font-serif fw-bold text-primary mb-3" id="titulo-form-libro">Registrar o Editar Libro</h2>
+                <p class="text-secondary small mb-4">Ingresa los datos del volumen para la catalogación oficial.</p>
+            </header>
+            <form id="form-libro" aria-labelledby="titulo-form-libro"
                 onsubmit="event.preventDefault(); alert('Acción estática: Formulario completado correctamente.');">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label small fw-bold" for="titulo">Título de la Obra *</label>
-                        <input class="form-control" id="titulo" placeholder="Ej. Ficciones" required="" type="text" />
+                        <input class="form-control" id="titulo" placeholder="Ej. Ficciones" required type="text">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label small fw-bold" for="autor">Autor / Creador *</label>
-                        <input class="form-control" id="autor" placeholder="Ej. Jorge Luis Borges" required=""
-                            type="text" />
+                        <input class="form-control" id="autor" placeholder="Ej. Jorge Luis Borges" required type="text">
                     </div>
                     <div class="col-md-8">
                         <label class="form-label small fw-bold" for="portada">URL de Portada Digital</label>
                         <input class="form-control" id="portada" placeholder="https://images.unsplash.com/..."
-                            type="url" />
+                            type="url">
                     </div>
                     <div class="col-md-4">
                         <label class="form-label small fw-bold" for="categoria">Categoría Temática *</label>
-                        <select class="form-select" id="categoria" required="">
-                            <option disabled="" selected="" value="">Seleccionar...</option>
+                        <select class="form-select" id="categoria" required>
+                            <option disabled selected value="">Seleccionar...</option>
                             <option value="Narrativa">Narrativa</option>
                             <option value="Tecnología">Tecnología</option>
                             <option value="Ciencia">Ciencia</option>
@@ -94,7 +97,209 @@
                 </div>
             </form>
         </section>
+
+        <section class="card card-biblioweb p-4 mb-5" aria-labelledby="titulo-inventario">
+            <header class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 font-serif fw-bold text-primary mb-0" id="titulo-inventario">Inventario de Títulos en Sala
+                </h2>
+                <span class="badge bg-secondary-subtle text-secondary">6 Registros</span>
+            </header>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <caption class="visually-hidden">Libros registrados en el inventario, con su portada, autor,
+                        categoría y acciones disponibles</caption>
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col" style="width: 70px;">Portada</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Categoría</th>
+                            <th class="text-end" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro6.jpg"
+                                    alt="Portada de Breve historia del tiempo de Stephen Hawking" width="45"
+                                    height="55"></td>
+                            <th class="fw-bold" scope="row">Breve historia del tiempo</th>
+                            <td>Stephen Hawking</td>
+                            <td><span class="badge rounded-pill badge-ciencia">Ciencia</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar Breve historia del tiempo"><span aria-hidden="true">✏️</span>
+                                    Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar Breve historia del tiempo"><span aria-hidden="true">🗑️</span>
+                                    Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro4.jpg"
+                                    alt="Portada de Clean Code" width="45" height="55"></td>
+                            <th class="fw-bold" scope="row">Clean Code</th>
+                            <td>Robert C. Martin</td>
+                            <td><span class="badge rounded-pill badge-tecnologia">Tecnología</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar Clean Code"><span aria-hidden="true">✏️</span> Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar Clean Code"><span aria-hidden="true">🗑️</span>
+                                    Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro5.jpg"
+                                    alt="Portada de Cosmos de Carl Sagan" width="45" height="55"></td>
+                            <th class="fw-bold" scope="row">Cosmos</th>
+                            <td>Carl Sagan</td>
+                            <td><span class="badge rounded-pill badge-ciencia">Ciencia</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar Cosmos"><span aria-hidden="true">✏️</span> Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar Cosmos"><span aria-hidden="true">🗑️</span> Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro2.jpeg"
+                                    alt="Portada de El principito" width="45" height="55"></td>
+                            <th class="fw-bold" scope="row">El principito</th>
+                            <td>Antoine de Saint-Exupéry</td>
+                            <td><span class="badge rounded-pill badge-narrativa">Narrativa</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar El principito"><span aria-hidden="true">✏️</span> Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar El principito"><span aria-hidden="true">🗑️</span>
+                                    Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro1.jpeg"
+                                    alt="Portada de La metamorfosis de Franz Kafka" width="45" height="55"></td>
+                            <th class="fw-bold" scope="row">La metamorfosis</th>
+                            <td>Franz Kafka</td>
+                            <td><span class="badge rounded-pill badge-narrativa">Narrativa</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar La metamorfosis"><span aria-hidden="true">✏️</span>
+                                    Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar La metamorfosis"><span aria-hidden="true">🗑️</span>
+                                    Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded miniatura-libro" src="../img/libros/libro3.jpg"
+                                    alt="Portada de The Pragmatic Programmer de Andrew Hunt y David Thomas" width="45"
+                                    height="55"></td>
+                            <th class="fw-bold" scope="row">The Pragmatic Programmer</th>
+                            <td>Andrew Hunt y David Thomas</td>
+                            <td><span class="badge rounded-pill badge-tecnologia">Tecnología</span></td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary me-1"
+                                    aria-label="Editar The Pragmatic Programmer"><span aria-hidden="true">✏️</span>
+                                    Editar</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    aria-label="Eliminar The Pragmatic Programmer"><span aria-hidden="true">🗑️</span>
+                                    Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card card-biblioweb p-4" aria-labelledby="titulo-solicitudes">
+            <header class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 font-serif fw-bold text-primary mb-0" id="titulo-solicitudes">Solicitudes Recibidas</h2>
+                <span class="badge bg-warning-subtle text-warning-emphasis">3 Pendientes</span>
+            </header>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <caption class="visually-hidden">Solicitudes de préstamo recibidas, con el libro, el solicitante, su
+                        correo, el comentario y el estado</caption>
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Libro Solicitado</th>
+                            <th scope="col">Solicitante</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Comentario</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="fw-normal" scope="row"><code>SOL-001</code></th>
+                            <td class="fw-bold">Cosmos</td>
+                            <td>Elena Valenzuela</td>
+                            <td>elena.v@correo.test</td>
+                            <td><em>"Para tesis de grado en comunicación científica"</em></td>
+                            <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                        </tr>
+                        <tr>
+                            <th class="fw-normal" scope="row"><code>SOL-002</code></th>
+                            <td class="fw-bold">Cien Años de Soledad</td>
+                            <td>Mateo Rivas</td>
+                            <td>m.rivas@lectores.org</td>
+                            <td><em>"Lectura para club de libro municipal"</em></td>
+                            <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                        </tr>
+                        <tr>
+                            <th class="fw-normal" scope="row"><code>SOL-003</code></th>
+                            <td class="fw-bold">Clean Code</td>
+                            <td>Sofía Navarro</td>
+                            <td>sofia.navarro@tech.es</td>
+                            <td><em>"Lista de espera tras renovación"</em></td>
+                            <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
     </main>
+
+    <footer class="footer-bw py-5 mt-auto">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4 small">
+                <div class="col">
+                    <h2 class="h5 font-serif fw-bold mb-3">BiblioWeb</h2>
+                    <p class="mb-2">Biblioteca Web especializada en conocimiento tecnico. Todos los derechos reservados.
+                    </p>
+                    <p class="mb-0">Acercamos la lectura y el conocimiento a toda la comunidad con un acervo de
+                        narrativa, ciencia y tecnología disponible para consulta en sala y préstamo a domicilio.</p>
+                </div>
+                <div class="col">
+                    <h2 class="h5 font-serif fw-bold mb-3">Sede Principal</h2>
+                    <ul>
+                        <li>Plaza Mayor del archivo</li>
+                        <li>Lun-Sab:08:30 - 20:00 h</li>
+                        <li>Domingos y festivos: cerrado</li>
+                        <li><a href="mailto:archivo@biblioweb.org">archivo@biblioweb.org</a></li>
+                        <li><a href="../index.html#horarios">Ver horarios y contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h2 class="h5 font-serif fw-bold mb-3">Fondo & Registro</h2>
+                    <ul>
+                        <li><a href="catalogo.html">Consulta bibliografica(OPAC)</a></li>
+                        <li><a href="../index.html#servicios">Prestamo Interbibliotecario</a></li>
+                        <li><a href="login.html">Portal de Personal Bibliotecario</a></li>
+                        <li><a href="../index.html">Volver a la página de inicio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bw-legal border-top mt-4 pt-3 text-center small">
+                © 2026 BiblioWeb · Catálogo General de Fondos Bibliográficos · Red de Bibliotecas Públicas
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

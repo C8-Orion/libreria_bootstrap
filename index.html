@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/tema.js"></script>
+</head>
+<body class="pagina-libreria">
+  <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-bw py-2">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-4" href="index.html">
+                    <img src="img/logo-libro.svg" alt="" width="28" height="28">
+                    BiblioWeb
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inicio
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.html" aria-current="page">Página de inicio</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.html#servicios">Servicios</a></li>
+                                <li><a class="dropdown-item" href="index.html#horarios">Horarios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="pages/catalogo.html">Catálogo</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <button type="button" class="btn btn-outline-light rounded-circle p-2 lh-1" id="theme-toggle" title="Alternar tema" aria-label="Alternar modo claro">
+                            
+                        </button>
+                        <a class="btn btn-terracota px-3 py-1" href="pages/login.html">Acceso Admin</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Franja de aviso -->
+    <div class="franja-aviso py-1">
+      <div class="container d-md-flex justify-content-between align-items-center small">
+
+        <div class="d-flex align-items-center gap-3">
+          <span class="badge badge-biblioweb text-uppercase">Red pública libre</span>
+          <span>Abierto hoy: 08:30 – 20:30 h</span>
+          <span class="d-none d-md-flex">Claustro Central y Sala de investigadores en régimen de libre consulta</span>
+        </div>
+
+        <div class="d-none d-md-flex gap-3">
+          <a href="#" class="text-decoration-none">Catálogo OPAC en línea</a>
+          <a href="#" class="text-decoration-none">Cómo llegar</a>
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
